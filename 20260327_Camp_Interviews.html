@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026.03.27 合宿面談サマリー</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
+:root {
+  --bg:#0a0a0f;--card:#12121a;--accent:#6c5ce7;--accent-l:#a29bfe;--accent-g:rgba(108,92,231,.3);
+  --grn:#00e676;--grn-d:rgba(0,230,118,.15);--red:#ff5252;--red-d:rgba(255,82,82,.15);
+  --yel:#ffd740;--yel-d:rgba(255,215,64,.15);--cyan:#00e5ff;
+  --t1:#e8e8f0;--t2:#8888a8;--t3:#555570;--bdr:rgba(255,255,255,.06);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--t1);font-family:'Inter','Noto Sans JP',sans-serif;line-height:1.7}
+.container{max-width:900px;margin:0 auto;padding:40px 24px}
+.header{text-align:center;padding:60px 0 48px;position:relative}
+.header::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:300px;height:300px;background:radial-gradient(circle,var(--accent-g) 0%,transparent 70%);pointer-events:none}
+.header-label{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--accent-l);margin-bottom:12px}
+.header h1{font-size:52px;font-weight:900;letter-spacing:-1px;background:linear-gradient(135deg,#fff,var(--accent-l));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px}
+.header-sub{font-size:15px;color:var(--t2);font-weight:300}
+.header-date{margin-top:16px;font-size:12px;color:var(--t3);letter-spacing:1px}
+.back-link{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--t3);text-decoration:none;letter-spacing:1px;margin-bottom:40px;transition:color .2s}
+.back-link:hover{color:var(--accent-l)}
+.toc{background:var(--card);border:1px solid var(--bdr);border-radius:16px;padding:28px;margin-bottom:48px}
+.toc-title{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--accent-l);margin-bottom:16px}
+.toc-list{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.toc-list a{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--t2);text-decoration:none;padding:6px 0;transition:color .2s}
+.toc-list a:hover{color:var(--accent-l)}
+.toc-list a::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0}
+.toc-cat{font-size:10px;color:var(--t3);margin-left:auto;letter-spacing:.5px;text-transform:uppercase}
+.athlete-block{margin-bottom:48px}
+.athlete-header{background:var(--card);border:1px solid var(--bdr);border-radius:16px 16px 0 0;padding:28px 32px;border-bottom:1px solid var(--accent-g)}
+.athlete-name{font-size:32px;font-weight:800;letter-spacing:-1px;background:linear-gradient(135deg,#fff,var(--accent-l));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:4px}
+.athlete-meta{font-size:12px;color:var(--t3);letter-spacing:1px;text-transform:uppercase}
+.section-block{background:var(--card);border:1px solid var(--bdr);border-left:none;border-right:none;padding:24px 32px}
+.section-block:last-child{border-radius:0 0 16px 16px;border:1px solid var(--bdr);border-top:none}
+.section-heading{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--accent-l);margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.section-heading::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--accent-g),transparent)}
+.note-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:4px}
+.note-card{background:rgba(255,255,255,.02);border:1px solid var(--bdr);border-radius:12px;padding:18px 20px}
+.note-card h4{font-size:12px;font-weight:600;color:var(--accent-l);margin-bottom:10px;letter-spacing:.5px}
+.note-card ul{list-style:none;padding:0}
+.note-card li{font-size:13px;color:var(--t2);padding:3px 0 3px 14px;position:relative;line-height:1.6}
+.note-card li::before{content:'';position:absolute;left:0;top:11px;width:5px;height:5px;border-radius:50%;background:var(--accent)}
+.note-card li .hl{color:var(--t1);font-weight:600}
+.note-card li .hl-g{color:var(--grn);font-weight:600}
+.note-card li .hl-r{color:var(--red);font-weight:600}
+.note-card li .hl-y{color:var(--yel);font-weight:600}
+.note-card li .hl-c{color:var(--cyan);font-weight:600}
+.full-note{background:rgba(255,255,255,.02);border:1px solid var(--bdr);border-radius:12px;padding:18px 20px;margin-bottom:16px}
+.full-note h4{font-size:12px;font-weight:600;color:var(--accent-l);margin-bottom:10px;letter-spacing:.5px}
+.full-note ul{list-style:none;padding:0}
+.full-note li{font-size:13px;color:var(--t2);padding:3px 0 3px 14px;position:relative;line-height:1.6}
+.full-note li::before{content:'';position:absolute;left:0;top:11px;width:5px;height:5px;border-radius:50%;background:var(--accent)}
+.full-note li .hl{color:var(--t1);font-weight:600}
+.full-note li .hl-y{color:var(--yel);font-weight:600}
+.full-note li .hl-r{color:var(--red);font-weight:600}
+.full-note li .hl-g{color:var(--grn);font-weight:600}
+.data-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px}
+.data-chip{background:rgba(255,255,255,.02);border:1px solid var(--bdr);border-radius:10px;padding:14px 16px;text-align:center}
+.data-chip .val{font-size:22px;font-weight:800;color:var(--grn);margin-bottom:2px}
+.data-chip .val.yellow{color:var(--yel)}.data-chip .val.red{color:var(--red)}.data-chip .val.cyan{color:var(--cyan)}
+.data-chip .lbl{font-size:10px;color:var(--t3);letter-spacing:1px;text-transform:uppercase}
+.warn-box{background:rgba(255,82,82,.05);border:1px solid rgba(255,82,82,.2);border-radius:12px;padding:18px 20px;margin-bottom:16px}
+.warn-box h4{font-size:12px;font-weight:600;color:var(--red);margin-bottom:10px;letter-spacing:.5px}
+.warn-box ul{list-style:none;padding:0}
+.warn-box li{font-size:13px;color:var(--t2);padding:3px 0 3px 14px;position:relative;line-height:1.6}
+.warn-box li::before{content:'';position:absolute;left:0;top:11px;width:5px;height:5px;border-radius:50%;background:var(--red)}
+.divider{height:1px;background:linear-gradient(90deg,transparent,var(--bdr),transparent);margin:24px 0}
+.footer{text-align:center;padding:40px 0 20px;font-size:11px;color:var(--t3);letter-spacing:1px}
+#pw-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:#0a0a0f;z-index:9999;display:flex;align-items:center;justify-content:center}
+#pw-overlay.hidden{display:none}
+#pw-box{background:#12121a;border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:40px;text-align:center;max-width:360px;width:90%}
+#pw-box h2{color:#e8e8f0;font-size:18px;margin-bottom:8px;font-family:'Inter',sans-serif}
+#pw-box p{color:#8888a8;font-size:13px;margin-bottom:24px}
+#pw-input{background:#1a1a2e;border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:12px 16px;color:#e8e8f0;font-size:14px;width:100%;outline:none;font-family:'Inter',sans-serif}
+#pw-input:focus{border-color:#6c5ce7}
+#pw-btn{background:linear-gradient(135deg,#6c5ce7,#a29bfe);border:none;border-radius:8px;padding:12px 32px;color:#fff;font-weight:600;font-size:14px;cursor:pointer;margin-top:16px;width:100%;font-family:'Inter',sans-serif}
+#pw-btn:hover{opacity:.9}
+#pw-err{color:#ff5252;font-size:12px;margin-top:12px;display:none}
+.content-locked{filter:blur(20px);pointer-events:none;user-select:none}
+@media(max-width:680px){
+  .note-grid,.data-row{grid-template-columns:1fr}
+  .toc-list{grid-template-columns:1fr}
+  .header h1{font-size:36px}
+}
+</style>
+</head>
+<body>
+
+<div id="pw-overlay">
+  <div id="pw-box">
+    <h2>JDSF Breaking Report</h2>
+    <p>2026.03.27 合宿面談サマリー</p>
+    <input type="password" id="pw-input" placeholder="パスワードを入力" autocomplete="off">
+    <button id="pw-btn" onclick="checkPw()">Enter</button>
+    <div id="pw-err">パスワードが正しくありません</div>
+  </div>
+</div>
+
+<div class="container content-locked" id="main-content">
+
+  <div class="header">
+    <div class="header-label">Camp Interview Summary</div>
+    <h1>2026.03.27</h1>
+    <div class="header-sub">ユース強化選手 個別面談 — 6名実施</div>
+    <div class="header-date">JDSF / JOC Breaking Strengthening Camp</div>
+  </div>
+
+  <a class="back-link" href="index.html">← Back to Reports Index</a>
+
+  <div class="toc">
+    <div class="toc-title">Athletes Interviewed</div>
+    <ul class="toc-list">
+      <li><a href="#wato">WATO <span class="toc-cat">B-Boy Youth</span></a></li>
+      <li><a href="#nagi">NAGI <span class="toc-cat">B-Girl Youth/Open</span></a></li>
+      <li><a href="#leo">LEO <span class="toc-cat">B-Boy Youth</span></a></li>
+      <li><a href="#lilkong">LIL KONG <span class="toc-cat">B-Boy Youth</span></a></li>
+      <li><a href="#hiyo">HIYO <span class="toc-cat">B-Girl Youth/Open</span></a></li>
+      <li><a href="#unk">氏名要確認 <span class="toc-cat">B-Boy Youth</span></a></li>
+    </ul>
+  </div>
+
+  <!-- ===== WATO ===== -->
+  <div class="athlete-block" id="wato">
+    <div class="athlete-header">
+      <div class="athlete-name">WATO</div>
+      <div class="athlete-meta">B-Boy Youth &mdash; 面談①</div>
+    </div>
+
+    <div class="section-block">
+      <div class="section-heading">ユースオリンピック共有事項</div>
+      <div class="full-note">
+        <ul>
+          <li>ブリズベン後に内定したような認識が広まっているが<span class="hl-r">確定ではない</span>ことを伝達済み</li>
+          <li>IOCによる国指定が前提のため、日本が選ばれない可能性もあることを認識させた</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section-block">
+      <div class="section-heading">現状・課題</div>
+      <div class="note-grid">
+        <div class="note-card">
+          <h4>本人が感じている変化・課題</h4>
+          <ul>
+            <li>勝ちにこだわるより<span class="hl">楽しんで踊る</span>方が結果が出ると考え始めている</li>
+            <li>バトル中（特に後半ラウンド）に<span class="hl-r">返し技が決められず迷いが生じる</span></li>
+            <li>以前のような「出し切れる感覚」が薄れている（本人も自覚あり）</li>
+          </ul>
+        </div>
+        <div class="note-card">
+          <h4>原因分析（本人）</h4>
+          <ul>
+            <li>以前は多様な相手と練習できていたが<span class="hl-r">同じメンバーとの練習に偏っている</span></li>
+            <li>刺激・インスピレーション不足</li>
+            <li>手の内を見切られることへの不安からギリギリまで隠してしまう</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-block">
+      <div class="section-heading">練習環境</div>
+      <div class="full-note">
+        <ul>
+          <li>拠点：水口近郊 / 主な練習場所：ニキスタ（週2）、自宅、コインスペース（500円/時間無制限）</li>
+          <li>練習相手：ソーマ（メイン）/ 指導：のりくん・もじゃさん（週1〜2回）</li>
+          <li>ムーブは自分で考案し、のりくんにフィードバックをもらう形</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section-block">
+      <div class="section-heading">コーチからのアドバイス</div>
+      <div class="full-note">
+        <ul>
+          <li><span class="hl">新しい動きへのチャレンジ</span>：自分のスタイルを崩さなくていい。流行りの体の使い方を「勉強」として取り入れることでボキャブラリー・オリジナリティの底上げを図る</li>
+          <li><span class="hl">練習の使い分け</span>：一人練習（動き開発）・スタジオ練習（技術・交流）・バトル練習を目的別に分ける</li>
+          <li><span class="hl">自己理解の深化</span>：なぜ迷うのかを自分で言語化できるようになることがバトル中のコントロール力向上につながる</li>
+          <li><span class="hl">ワクワク感の回復</span>：ダンス以外の日常でも新しいことに挑戦し、自分への刺激を増やす</li>
+          <li>瞬発的な判断スタイルは<span class="hl-g">長期的な強みになる</span>ので大切にする</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section-block">
+      <div class="section-heading">データサマリー</div>
+      <div class="full-note">
+        <ul>
+          <li><span class="hl-g">エクスキューション（完成度）</span>：高い／勝因として機能している</li>
+          <li><span class="hl-r">オリジナリティ</span>：他項目と比べ低め／負け試合で足を引っ張ることが多い</li>
+          <li>対戦相手別データ確認済み。データはスマートフォンからいつでも閲覧可能</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== NAGI ===== -->
+  <div class="athlete-block" id="nagi">
+    <div class="athlete-header">
+      <div class="athlete-name">NAGI</div>
+      <div class="athlete-meta">B-Girl Youth / Open &mdash; 面談②</div>
+    </div>
+
+    <div class="section-block">
+      <div class="section-heading">最近の成長・状態</div>
+      <div class="note-grid">
+        <div class="note-card">
+          <h4>変化の要因</h4>
+          <ul>
+            <li><span class="hl-g">全日本・ブリズベンともに良い結果</span></li>
+            <li>ユースオリンピックを目標に設定したことでマインドが切り替わった</li>
+            <li>音で遊べるようになった・ステージで緊張しなくなった</li>
+          </ul>
+        </div>
+        <div class="note-card">
+          <h4>スタジオ退団（静岡）</h4>
+          <ul>
+            <li>スタジオ内でのいじめ・責任転嫁を受け退団</li>
+            <li>妹も同時に退団。先生・他メンバーの助けなし</li>
+            <li>退団後、地域内でさらに<span class="hl-r">孤立状態</span>に</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-block">
+      <div class="section-heading">課題・悩み</div>
+      <div class="full-note">
+        <ul>
+          <li><span class="hl-r">オリジナリティとエクスキューション</span>が弱点（データで確認）</li>
+          <li>ロイヤルに勝てない：オールラウンダーで全項目を取る相手に自分の得意項目だけでは対抗できない</li>
+          <li>孤独な練習環境への不安 →「コーチが必要」という気持ちに変換されていたが、今は薄れてきている</li>
+          <li>コインスタジオはできても、信頼できる同世代の仲間がいない</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section-block">
+      <div class="section-heading">コーチからのアドバイス</div>
+      <div class="full-note">
+        <ul>
+          <li><span class="hl">コーチはつけない方がよい（現時点では）</span>：ビジネス化・依存のリスク。信頼できる人は自分で見つけるべき</li>
+          <li><span class="hl">ブレイクライフとしての視点</span>：目先の勝敗だけで判断しない。ユースオリンピックはあくまで通過点</li>
+          <li>東京進学（来年）で環境が大きく変わる可能性あり。前向きに捉えてほしい</li>
+          <li>合宿・外部練習を通じて<span class="hl">相談できる人間関係を広げる</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section-block">
+      <div class="section-heading">データサマリー</div>
+      <div class="data-row">
+        <div class="data-chip"><div class="val cyan">78%</div><div class="lbl">今年勝率</div></div>
+        <div class="data-chip"><div class="val yellow">60%</div><div class="lbl">通算勝率</div></div>
+        <div class="data-chip"><div class="val">15大会</div><div class="lbl">47バトル分析</div></div>
+      </div>
+      <div class="full-note">
+        <ul>
+          <li><span class="hl-g">ミュージカリティ・テクニック・ボキャブラリー</span>：強み</li>
+          <li><span class="hl-r">オリジナリティ・エクスキューション</span>：課題／負け試合の主因</li>
+          <li>毎年勝率が上昇中。対戦相手別データも確認済み</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section-block">
+      <div class="section-heading">練習方向性</div>
+      <div class="note-grid">
+        <div class="note-card">
+          <h4>エクスキューション（短期）</h4>
+          <ul>
+            <li>ナインティーの回数を増やすなど<span class="hl">毎日10〜20分の反復基礎練</span>を組み込む</li>
+            <li>「正解」がある項目なので集中的に取り組める</li>
+          </ul>
+        </div>
+        <div class="note-card">
+          <h4>オリジナリティ（中長期）</h4>
+          <ul>
+            <li>動きの歴史・誰が何の動きを作ったかを知る</li>
+            <li>コリアンロック・VHS動画等を日常的に視聴</li>
+            <li><span class="hl">焦らず時間をかけて積み上げる</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== LEO ===== -->
+  <div class="athlete-block" id="leo">
+    <div class="athlete-header">
+      <div class="athlete-name">LEO</div>
+      <div class="athlete-meta">B-Boy Youth &mdash; 面談③</div>
+    </div>
+
+    <div class="section-block">
+      <div class="section-heading">現状・練習環境</div>
+      <div class="note-grid">
+        <div class="note-card">
+          <h4>練習スタイル</h4>
+          <ul>
+            <li>JSBスタジオでは教える側・サポート役のため<span class="hl-r">自分の練習ができていない</span></li>
+            <li>ガンスモスタジオも行けていない状態</li>
+            <li>約1年、ほぼ<span class="hl-r">1人練習が固定化</span></li>
+            <li>1人だと1〜1.5時間で終わる。仲間がいれば3時間できる</li>
+          </ul>
+        </div>
+        <div class="note-card">
+          <h4>モチベーション・ルーティン</h4>
+          <ul>
+            <li>毎日動画を視聴（自分のバトル・最新動画・昔のレッドブル等）でモチベを上げてから練習</li>
+            <li>気分ベースの練習（無理に詰め込まない）</li>
+            <li>バトル3ヶ月前から毎日4〜5時間（レッスン半分・自主練半分）</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-block">
+      <div class="section-heading">ダンス面の課題</div>
+      <div class="full-note">
+        <ul>
+          <li><span class="hl-r">オリジナリティとエクスキューション</span>が弱点（データで確認）</li>
+          <li>中国選手（シーチェン・ヨヨ等）との対戦に苦手意識</li>
+          <li>同じネタを同一バトル内で2回使ってしまう</li>
+          <li>キッズ時代のネタ・動かし方が抜けず<span class="hl-r">子供っぽく見える</span>ことがある（本人も自覚）</li>
+          <li>スタイルを変えたいが「変えると負ける」という恐怖から踏み出せない</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section-block">
+      <div class="section-heading">コーチからのアドバイス</div>
+      <div class="full-note">
+        <ul>
+          <li><span class="hl">1人練習の限界</span>：このまま続けると成長が止まり、勝てなくなった時に楽しくなくなる。しんどい時に支え合える仲間を今から作る</li>
+          <li><span class="hl">練習プランニング</span>：その場のノリではなくテーマを決めて取り組む。毎日の締めに基礎（エアートーマス等）を入れる</li>
+          <li><span class="hl">反復を苦にしない工夫</span>：10個のパワームーブを毎回順番を変えながらつなぐ等</li>
+          <li><span class="hl">スキル練習の目的設定</span>：「このスキルを使ってやりたいネタ」を先にイメージしてから取り組む</li>
+          <li>ボキャブラリー向上は①ネタの数を増やす、②1つの動きからの派生を増やす、の2軸で</li>
+          <li>週1回でも外部練習へ。好きなダンサーに連絡して練習させてもらうことも提案</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section-block">
+      <div class="section-heading">データサマリー</div>
+      <div class="full-note">
+        <ul>
+          <li><span class="hl-g">オリジナリティ：圧倒的に高い</span>／最大の強み</li>
+          <li><span class="hl-g">ミュージカリティ</span>：高め</li>
+          <li><span class="hl-r">エクスキューション・テクニック</span>：課題／接戦・負け試合で差がつく</li>
+          <li>テクニックには伸びしろあり。対戦相手別データ確認済み</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== LIL KONG ===== -->
+  <div class="athlete-block" id="lilkong">
+    <div class="athlete-header">
+      <div class="athlete-name">LIL KONG</div>
+      <div class="athlete-meta">B-Boy Youth &mdash; 面談④</div>
+    </div>
+
+    <div class="section-block">
+      <div class="section-heading">最近の成長</div>
+      <div class="note-grid">
+        <div class="note-card">
+          <h4>急成長の要因</h4>
+          <ul>
+            <li>ポルトベルで結果が出なかったことをきっかけに<span class="hl">練習量を大幅増加</span></li>
+            <li>レッスン前にも自主練するようになってから特に伸びた</li>
+            <li>週7日・バトル3ヶ月前から毎日4〜5時間</li>
+          </ul>
+        </div>
+        <div class="note-card">
+          <h4>練習環境</h4>
+          <ul>
+            <li>のりくんのレッスン（週4）＋レッスン前自主練</li>
+            <li>ムーブは自分で考案 → のりくんがフィードバック</li>
+            <li>家族のサポート充実（おじいちゃんも応援参加）</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-block">
+      <div class="section-heading">対人トラブルと今後の課題 ⚠️</div>
+      <div class="warn-box">
+        <h4>「栗まんじゅう」発言によるトラブル</h4>
+        <ul>
+          <li>リルコン（たいすけ）への発言で関係が悪化</li>
+          <li>保護者同伴で福岡まで謝りに行き、その後は普通に挨拶できる状態に戻った</li>
+          <li>今後は<span class="hl-g">絶対に言わないと決めている</span></li>
+        </ul>
+      </div>
+      <div class="warn-box">
+        <h4>「ジャイアン気質」への注意喚起</h4>
+        <ul>
+          <li>自分の言うことを聞かせようとする傾向がある（本人も自覚）</li>
+          <li>現在注目を浴びている時期だからこそ、<span class="hl-r">言動が見えないところで影響を与えるリスク</span>がある</li>
+          <li>結果が出ている今が最も「調子に乗りやすい」タイミングと伝えた</li>
+          <li>チームを立ち上げていることは評価できるが、<span class="hl">人を引き付けるリーダーになるには感情コントロールと人間的成長が必要</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section-block">
+      <div class="section-heading">コーチ総評</div>
+      <div class="full-note">
+        <ul>
+          <li>ブレーキンを体現するトップ選手になれる<span class="hl-g">器を持っている</span></li>
+          <li>今後は「人が寄ってくる存在」「応援したいと思われる選手」になることを目指してほしい</li>
+          <li>ダンスの調子は良く、マンネリ感なし。体つきの変化で踊り方が別人のように見えるようになってきた</li>
+          <li>（ノンスキーと並んで）日本を引っ張れる器があるとコーチ陣は評価している</li>
+        </ul>
+      </div>
+      <div class="full-note">
+        <h4>データサマリー</h4>
+        <ul>
+          <li>ダンスポーツの悩みはほぼなし。データ分析は別途実施予定</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== HIYO ===== -->
+  <div class="athlete-block" id="hiyo">
+    <div class="athlete-header">
+      <div class="athlete-name">HIYO</div>
+      <div class="athlete-meta">B-Girl Youth / Open &mdash; 面談⑤（追加セッション）</div>
+    </div>
+
+    <div class="section-block">
+      <div class="section-heading">現状・成長</div>
+      <div class="note-grid">
+        <div class="note-card">
+          <h4>変化の要因</h4>
+          <ul>
+            <li>年末頃から急激に成長・勢いが出てきた</li>
+            <li>所属スタジオを退団したことによる<span class="hl-g">精神的な解放</span>が最大要因</li>
+            <li>音で遊べるようになった、ステージで緊張しなくなった</li>
+          </ul>
+        </div>
+        <div class="note-card">
+          <h4>カルチャー vs スポーツ</h4>
+          <ul>
+            <li>もともとカルチャー系が好き（BC1は長年の目標、昨年初出場）</li>
+            <li>昨年はユースオリンピック対策でスポーツ系に集中</li>
+            <li>大会の性質に応じて気持ちを完全に切り替えられている</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-block">
+      <div class="section-heading">課題・悩み</div>
+      <div class="full-note">
+        <ul>
+          <li><span class="hl-r">オリジナリティとエクスキューション</span>が弱点（データで確認）</li>
+          <li>ロイヤルに勝てない。オリジナリティ・ミュージカリティに頼りすぎている</li>
+          <li>バトル中に感情が先行し、<span class="hl-r">音の雰囲気に合わない動きになる</span>時がある（ミュージカリティの課題）</li>
+          <li>ムーブはほぼ自分だけで制作・判断（指導者訪問は年1回程度）</li>
+          <li>約1年ほぼ1人で練習（地域内の派閥問題で孤立状態）</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section-block">
+      <div class="section-heading">コーチからのアドバイス</div>
+      <div class="full-note">
+        <ul>
+          <li><span class="hl">1人練習の限界</span>：このまま続けると成長が止まり、勝てなくなった時に楽しくなくなる</li>
+          <li><span class="hl">ブレイクライフを楽しむ</span>：勝ち負けでなくブレイクライフ全体を楽しむ視点が特に本選手には重要</li>
+          <li>ミュージカリティ改善は<span class="hl">感情コントロールと音を「感じる」意識</span>から取り組む（音楽は好きで感じる力はある。ムーブへの意識が強すぎると感じられなくなる傾向がある）</li>
+          <li>東京進学後は環境が大きく変わる。外部練習・セッション機会を意図的に作っていく</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section-block">
+      <div class="section-heading">データサマリー</div>
+      <div class="data-row">
+        <div class="data-chip"><div class="val cyan">78%</div><div class="lbl">今年勝率</div></div>
+        <div class="data-chip"><div class="val yellow">60%</div><div class="lbl">通算勝率</div></div>
+        <div class="data-chip"><div class="val">15大会</div><div class="lbl">47バトル分析</div></div>
+      </div>
+      <div class="full-note">
+        <ul>
+          <li><span class="hl-g">ミュージカリティ・テクニック・ボキャブラリー</span>：強み</li>
+          <li><span class="hl-r">オリジナリティ・エクスキューション（今年やや低下傾向）</span>：課題</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 氏名要確認 ===== -->
+  <div class="athlete-block" id="unk">
+    <div class="athlete-header">
+      <div class="athlete-name">氏名要確認</div>
+      <div class="athlete-meta">B-Boy Youth（九州・北九州/小倉在住）&mdash; 面談⑥</div>
+    </div>
+
+    <div class="section-block">
+      <div class="section-heading">現状・練習環境</div>
+      <div class="note-grid">
+        <div class="note-card">
+          <h4>練習スタイル</h4>
+          <ul>
+            <li>基本は<span class="hl">自宅での1人練習</span>（収録環境あり）</li>
+            <li>純のオンラインレッスンのみ（大会前に練習量増加）</li>
+            <li>ムーブは自分で作り、純にフィードバックをもらう</li>
+            <li>大会3ヶ月前から毎日4〜5時間</li>
+          </ul>
+        </div>
+        <div class="note-card">
+          <h4>モチベーション</h4>
+          <ul>
+            <li>毎日体重を測り、<span class="hl">体重が減った日は好きなものを食べる</span>ルーティンが最大のモチベーション</li>
+            <li>踊る理由：家族が応援・サポートしてくれているから結果で恩返ししたい</li>
+            <li>ダンスポーツの方が恩返しを実感しやすい</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-block">
+      <div class="section-heading">重要事項：チーム結成の話への対応 ⚠️</div>
+      <div class="warn-box">
+        <h4>大輔（たいすけ）からのチーム誘い</h4>
+        <ul>
+          <li>アンダーマイウングスの大輔からチームを作ると誘われている（約2週間前）</li>
+          <li>日向・れんれんが仲間かと聞かれて<span class="hl-r">即答できない状態</span></li>
+        </ul>
+      </div>
+      <div class="warn-box">
+        <h4>コーチからの警告</h4>
+        <ul>
+          <li><span class="hl-r">チームは自分たちで作るもの。大人が作るのはプロジェクト</span>。大人が入ったチームはうまくいかない（過去事例多数）</li>
+          <li>「俺が作った」と言いたがる人物への警戒が必要</li>
+          <li>参加前に<span class="hl">「何をするグループなのか」を明確に確認</span>してから返答すること</li>
+          <li>遠征費を出す・チームを作ると言ってくる大人には必ず見返りがある前提で考える</li>
+          <li>判断に迷ったら<span class="hl-g">コーチ陣に相談</span>（連絡を歓迎することを伝達済み）</li>
+          <li>焦る必要はない。自分は必ず上手くなる。<span class="hl">断る勇気も必要</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section-block">
+      <div class="section-heading">ダンス面・コーチ所見</div>
+      <div class="full-note">
+        <ul>
+          <li>知識量は多くないが、ストイックさ・継続力でここまで来た。<span class="hl-g">才能がある</span></li>
+          <li>バトルを見るとシルエットや動きが誰かの影響を受けすぎている印象。本人らしさをもっと出していける余地あり</li>
+          <li>体はまだ成長期中のため、体つきの変化による動きの変化を今後に期待</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section-block">
+      <div class="section-heading">アンダーマイウングス内部状況（コーチ共有）</div>
+      <div class="full-note">
+        <ul>
+          <li>チーム内で情報共有がされていない部分があり、本選手を含めメンバーが困惑している状態</li>
+          <li>コーチ陣からも一方のチームへ言えていないことがある</li>
+          <li>コーチ陣から双方のチームメンバーへの情報共有機会を設けることを検討中</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">JDSF / JOC Breaking Tool &mdash; 2026.03.27 Camp Interview Summary</div>
+
+</div>
+
+<script>
+async function sha256(msg) {
+  var buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(msg));
+  return Array.from(new Uint8Array(buf)).map(function(b){return b.toString(16).padStart(2,'0')}).join('');
+}
+function checkPw() {
+  var input = document.getElementById('pw-input').value;
+  sha256(input).then(function(h) {
+    if (h === '08fd76f8bd406d3af057711481b1c7bb61aca4ae0d3d2879fb6edc2cec3e8598') {
+      document.getElementById('pw-overlay').classList.add('hidden');
+      document.getElementById('main-content').classList.remove('content-locked');
+      sessionStorage.setItem('jdsf_auth','1');
+    } else {
+      document.getElementById('pw-err').style.display = 'block';
+      document.getElementById('pw-input').value = '';
+    }
+  });
+}
+document.getElementById('pw-input').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') checkPw();
+});
+if (sessionStorage.getItem('jdsf_auth') === '1') {
+  document.getElementById('pw-overlay').classList.add('hidden');
+  document.getElementById('main-content').classList.remove('content-locked');
+}
+</script>
+</body>
+</html>
