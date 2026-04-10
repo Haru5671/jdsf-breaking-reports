@@ -19,8 +19,45 @@ a.card.card-date{border-color:#2a4a6b;background:linear-gradient(135deg,#161a2a,
 a.card.card-date .name{background:linear-gradient(135deg,#00d4ff,#7b2ff7);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 a.card.card-date:hover{border-color:#00d4ff;box-shadow:0 8px 30px rgba(0,212,255,.2)}
 </style>
+<style>
+#auth-overlay{position:fixed;inset:0;z-index:99999;background:rgba(10,10,10,0.98);display:flex;align-items:center;justify-content:center}
+.auth-box{background:#161616;border:1px solid #2a2a2a;border-radius:14px;padding:44px 40px;width:320px;text-align:center}
+.auth-box h2{font-size:11px;letter-spacing:4px;color:#00d4ff;margin-bottom:14px;text-transform:uppercase}
+.auth-box p{font-size:13px;color:#888;margin-bottom:28px}
+#auth-pw{width:100%;padding:11px 16px;background:#0a0a0a;border:1px solid #2a2a2a;border-radius:8px;color:#fff;font-size:15px;outline:none;text-align:center;letter-spacing:6px;margin-bottom:10px}
+#auth-pw:focus{border-color:#00d4ff}
+#auth-btn{width:100%;padding:11px;background:linear-gradient(135deg,#00d4ff,#7b2ff7);border:none;border-radius:8px;color:#fff;font-size:13px;font-weight:700;cursor:pointer}
+#auth-err{font-size:11px;color:#f87171;margin-top:8px;height:16px}
+</style>
 </head>
 <body>
+
+<div id="auth-overlay">
+  <div class="auth-box">
+    <h2>CONFIDENTIAL</h2>
+    <p>JDSF関係者限り — パスワードを入力してください</p>
+    <input id="auth-pw" type="password" placeholder="••••••" maxlength="30"
+      onkeydown="if(event.key==='Enter')doAuth()">
+    <button id="auth-btn" onclick="doAuth()">ログイン</button>
+    <div id="auth-err"></div>
+  </div>
+</div>
+<script>
+(function(){
+  const HASH='08fd76f8bd406d3af057711481b1c7bb61aca4ae0d3d2879fb6edc2cec3e8598';
+  const KEY='jdsf_reports_auth';
+  if(sessionStorage.getItem(KEY)==='1'){document.getElementById('auth-overlay').remove();return;}
+  window.doAuth=async function(){
+    const v=document.getElementById('auth-pw').value;
+    const buf=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(v));
+    const hex=Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
+    if(hex===HASH){sessionStorage.setItem(KEY,'1');document.getElementById('auth-overlay').remove();}
+    else{document.getElementById('auth-err').textContent='パスワードが違います';document.getElementById('auth-pw').value='';}
+  };
+  document.getElementById('auth-pw').focus();
+})();
+</script>
+
 <h1>JDSF Breaking Performance Reports</h1>
 <p class="sub">2024-2026 Season - Athlete Feedback &amp; Camp Reports</p>
 <div class="grid">
